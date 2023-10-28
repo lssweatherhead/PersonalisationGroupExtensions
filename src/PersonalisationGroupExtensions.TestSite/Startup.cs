@@ -1,3 +1,5 @@
+using Our.Umbraco.PersonalisationGroups.Core;
+
 namespace PersonalisationGroupExtensions.TestSite
 {
     public class Startup
@@ -34,6 +36,7 @@ namespace PersonalisationGroupExtensions.TestSite
                 .AddWebsite()
                 .AddDeliveryApi()
                 .AddComposers()
+                .AddPersonalisationGroups(_config)
                 .Build();
         }
 
@@ -60,6 +63,7 @@ namespace PersonalisationGroupExtensions.TestSite
                     u.UseInstallerEndpoints();
                     u.UseBackOfficeEndpoints();
                     u.UseWebsiteEndpoints();
+                    u.UsePersonalisationGroupsEndpoints();
                 });
         }
     }

@@ -4,6 +4,27 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\AuthenticationStatus\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\Continent\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\Cookie\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\Country\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\DayOfWeek\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\Host\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\MemberGroup\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\MemberProfileField\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\MemberType\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\MonthOfYear\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\NumberOfVisits\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\PagesViewed\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\Querystring\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\Referral\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\Region\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\Session\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\Criteria\TimeOfDay\definition.editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\personalisation-group-definition.html" />
+    <Content Include="App_Plugins\PersonalisationGroups\personalisation-groups.css" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Umbraco.Cms" Version="12.2.0" />
@@ -12,11 +33,53 @@
   <ItemGroup>
     <!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
     <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="68.2.0.9" />
+    <PackageReference Include="UmbracoPersonalisationGroups" Version="3.2.8" />
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\Generated\" />
+    <Folder Include="umbraco\models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\AuthenticationStatus\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\AuthenticationStatus\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Continent\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Continent\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Cookie\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Cookie\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Country\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Country\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Country\geolocation.service.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\DayOfWeek\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\DayOfWeek\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Host\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Host\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\MemberGroup\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\MemberGroup\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\MemberProfileField\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\MemberProfileField\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\MemberType\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\MemberType\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\MonthOfYear\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\MonthOfYear\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\NumberOfVisits\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\NumberOfVisits\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\PagesViewed\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\PagesViewed\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Querystring\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Querystring\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Referral\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Referral\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Region\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Region\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Session\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\Session\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\TimeOfDay\definition.editor.controller.js" />
+    <None Include="App_Plugins\PersonalisationGroups\Criteria\TimeOfDay\definition.translator.js" />
+    <None Include="App_Plugins\PersonalisationGroups\package.manifest" />
+    <None Include="App_Plugins\PersonalisationGroups\personalisaton-group-definition.controller.js" />
   </ItemGroup>
 
   <PropertyGroup>
