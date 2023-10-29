@@ -12,27 +12,41 @@
 
     $scope.options = [
       {
-        "group": "Self-segmented users",
+        "group": "Visitor types",
         "options": [
-          { name: 'Cafe', value: 'cafe' },
-          { name: 'Pub', value: 'pub' },
-          { name: 'Restaurant', value: 'restaurant' }
-        ]
-      },
-      {
-        "group": "User journey segments",
-        "options": [
-          { name: 'Pepsi enthusiast', value: 'pepsi' },
-          { name: 'Customer reward', value: 'reward' },
-          { name: 'Support seeking', value: 'support' }
+          { name: 'New to Umbraco', value: '05befbf4-e558-4b0b-a425-12d94b814ba3' },
+          { name: 'Umbraco MVP', value: '4b1cebc5-dcc6-497b-a0e2-8cd13cd320aa' },
+          { name: 'Umbraco HQ', value: '4cbb68dc-1336-425b-a1c3-6dae92184797' },
+          { name: 'At Umbraco UK Fest 2023', value: 'b99f9921-61c3-4ffd-bfa9-891189a21487' }
         ]
       }];
     $scope.disabledOptions = [];
 
     // MODEL
-    $scope.model.value = {
-      textstring: $scope.textstring
-    }
+    var modelValue = [
+      {
+        group: "",
+        textstring: "This is a default hello"
+      },
+      {
+        group: "05befbf4-e558-4b0b-a425-12d94b814ba3",
+        textstring: "Welcome to Umbraco"
+      },
+      {
+        group: "4b1cebc5-dcc6-497b-a0e2-8cd13cd320aa",
+        textstring: "Hey Umbraco MVP, let's get started"
+      },
+      {
+        group: "4cbb68dc-1336-425b-a1c3-6dae92184797",
+        textstring: "Hi HQ person :)"
+      },
+      {
+        group: "b99f9921-61c3-4ffd-bfa9-891189a21487",
+        textstring: "Hooray, you're at Umbraco UK Fest!"
+      },
+    ];
+    $scope.model.value = modelValue;
+    console.log($scope.model.value)
 
     // HEADER FUNCS
     $scope.togglePersonalisationView = function () {
