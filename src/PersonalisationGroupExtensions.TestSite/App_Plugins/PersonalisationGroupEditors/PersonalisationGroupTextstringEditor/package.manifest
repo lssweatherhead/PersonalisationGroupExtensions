@@ -1,0 +1,9 @@
+﻿{
+    // array of files we want to inject into the application on app_start
+    "css": [
+    "~/App_Plugins/PersonalisationGroupEditors/PersonalisationGroupTextstringEditor/pg-textstring-editor.css"
+        ],
+    "javascript": [
+    "~/App_Plugins/PersonalisationGroupEditors/PersonalisationGroupTextstringEditor/pg-textstring-editor.controller.js"
+        ]
+}

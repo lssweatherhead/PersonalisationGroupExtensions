@@ -1,0 +1,25 @@
+.toggle-pgs-media {
+  margin-top: 20px;
+}
+
+.toggle-pgs-media uui-tag {
+  margin-left: 20px;
+}
+
+.add-pg {
+  margin-bottom: 20px;
+  background-color: #eaeaea;
+  display: flex;
+}
+
+.add-pg label {
+  padding-top: 7px;
+}
+
+.personalisation-option {
+  padding: 20px 0;
+}
+
+#pgs-media {
+  margin-left: 10px;
+}

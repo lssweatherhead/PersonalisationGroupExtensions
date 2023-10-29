@@ -5,6 +5,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\PersonalisationGroupEditors\PersonalisationGroupMediaPickerEditor\pg-mediapicker-editor.css" />
+    <Content Include="App_Plugins\PersonalisationGroupEditors\PersonalisationGroupMediaPickerEditor\pg-mediapicker-editor.html" />
+    <Content Include="App_Plugins\PersonalisationGroupEditors\PersonalisationGroupTextstringEditor\pg-textstring-editor.css" />
+    <Content Include="App_Plugins\PersonalisationGroupEditors\PersonalisationGroupTextstringEditor\pg-textstring-editor.html" />
     <Content Include="App_Plugins\PersonalisationGroups\Criteria\AuthenticationStatus\definition.editor.html" />
     <Content Include="App_Plugins\PersonalisationGroups\Criteria\Continent\definition.editor.html" />
     <Content Include="App_Plugins\PersonalisationGroups\Criteria\Cookie\definition.editor.html" />
@@ -43,6 +47,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="App_Plugins\PersonalisationGroupEditors\PersonalisationGroupMediaPickerEditor\package.manifest" />
+    <None Include="App_Plugins\PersonalisationGroupEditors\PersonalisationGroupTextstringEditor\package.manifest" />
+    <None Include="App_Plugins\PersonalisationGroupEditors\PersonalisationGroupTextstringEditor\pg-textstring-editor.controller.js" />
     <None Include="App_Plugins\PersonalisationGroups\Criteria\AuthenticationStatus\definition.editor.controller.js" />
     <None Include="App_Plugins\PersonalisationGroups\Criteria\AuthenticationStatus\definition.translator.js" />
     <None Include="App_Plugins\PersonalisationGroups\Criteria\Continent\definition.editor.controller.js" />

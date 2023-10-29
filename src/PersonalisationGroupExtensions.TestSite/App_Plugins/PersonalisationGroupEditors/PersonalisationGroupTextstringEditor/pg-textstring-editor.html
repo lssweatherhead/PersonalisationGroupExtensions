@@ -1,0 +1,102 @@
+<div ng-controller="PgTextstringEditorController" class="pg-textstring-editor">
+  
+  <uui-input value="{{textstring}}"></uui-input>
+  
+  <div class="toggle-pgs-text">
+    <uui-icon-registry-essential>
+      <uui-button ng-show="!showPersonalisationOpts" look="outline" label="Show personalisation" ng-click="togglePersonalisationView()">
+        <uui-icon name="add"></uui-icon> Show personalisation
+      </uui-button>
+      <uui-button ng-show="showPersonalisationOpts" look="outline" label="Hide personalisation" ng-click="togglePersonalisationView()">
+        <uui-icon name="subtract"></uui-icon> Hide personalisation
+      </uui-button>
+
+      <uui-tag ng-show="pgOptions.length > 0 && !showPersonalisationOpts" style="margin-right:12px;" color="positive" look="outline">{{pgOptions.length}} variant(s)</uui-tag>
+    </uui-icon-registry-essential>
+  </div>
+  
+  
+  <uui-form-layout-item ng-show="showPersonalisationOpts">
+    <uui-box class="add-pg">
+      <div class="add-pg-layout">
+        <div>
+          <select class="pgs-ts pgs-select" ng-model="pg" ng-change="selectSegment(pg)">
+            <option value="">Select a variant</option>
+            <optgroup ng-repeat="selectOptGroup in options" label="{{ selectOptGroup.group }}">
+              <option ng-repeat="selectOpt in selectOptGroup.options" value="{{selectOpt.value}}" ng-disabled="isDisabled(selectOptGroup.group, selectOpt.value)">{{selectOpt.name}}</option>
+            </optgroup>
+          </select>     
+        </div>
+        <div class="add-pg-segment-tags">
+          <uui-icon-registry-essential>
+            <uui-button class="add-pg-segment-single-tag" ng-repeat="variant in variantOptionsToCreateContentFor track by $index" color="danger" look="outline" ng-click="removeSegment($index, variant.segment)">
+              <uui-icon name="remove"></uui-icon> {{variant.segmentDisplay}}
+            </uui-button>
+          </uui-icon-registry-essential>
+        </div>  
+        <div class="add-pg-add-content" ng-show="variantOptionsToCreateContentFor.length > 0">
+          <uui-icon-registry-essential>
+            <uui-button look="primary" label="Add content" ng-click="addContentForVariants()">
+              <uui-icon name="add"></uui-icon> Add content
+            </uui-button>
+          </uui-icon-registry-essential>
+        </div>
+      </div>
+    </uui-box>
+
+    <uui-box style="--uui-box-default-padding: 0;" ng-show="pgOptions.length > 0">
+      <uui-table>
+        <uui-table-head>
+          <uui-table-head-cell style="width: 50px;"></uui-table-head-cell>
+          <uui-table-head-cell style="width: 400px;">Segment(s)</uui-table-head-cell>
+          <uui-table-head-cell>Input</uui-table-head-cell>
+        </uui-table-head>
+
+        <uui-table-row ng-repeat="option in pgOptions track by $index">
+          <uui-table-cell>
+            <uui-icon-registry-essential>
+              <uui-action-bar style="justify-self: left;">
+                <uui-button label="Delete" ng-click="removeOption($index, option)">
+                  <uui-icon name="delete"></uui-icon>
+                </uui-button>
+              </uui-action-bar>
+            </uui-icon-registry-essential>
+          </uui-table-cell>
+          <uui-table-cell>
+            <uui-icon-registry-essential>
+              <uui-button class="variant-segment-single-tag" ng-repeat="variant in option.variants track by $index" color="default" look="placeholder" ng-click="removeVariantOption($parent.$index, $index, variant.segment)">
+                <uui-icon ng-show="option.variants.length > 1" name="remove"></uui-icon> {{variant.segmentDisplay}}
+              </uui-button>
+              <uui-button ng-if="hasMoreOptions()" color="positive" look="default" ng-click="addMoreVariants($index)" label="Add segments">
+                <uui-icon name="add"></uui-icon>
+              </uui-button>
+            </uui-icon-registry-essential>
+          </uui-table-cell>
+          <uui-table-cell><uui-input type="text" name="variant-input" placeholder="" label="variant input" ng-model="pgOptions[$index].text"></uui-input></uui-table-cell>
+        </uui-table-row>
+      </uui-table>
+    </uui-box>
+  </uui-form-layout-item>
+
+  <uui-dialog class="modal" ng-if="modalIsOpen" data-element="overlay" class="umb-overlay umb-overlay-center umb-overlay--med">
+    <uui-dialog-layout headline="Add variants">
+
+      <select class="pgs-select" ng-model="pgModal" ng-change="selectSegmentInModal(pgModal)">
+        <option value="">Select a variant</option>
+        <optgroup ng-repeat="selectOptGroup in options" label="{{ selectOptGroup.group }}">
+          <option ng-repeat="selectOpt in selectOptGroup.options" value="{{selectOpt.value}}" ng-disabled="isDisabled(selectOptGroup.group, selectOpt.value)">{{selectOpt.name}}</option>
+        </optgroup>
+      </select>
+
+      <uui-icon-registry-essential>
+        <uui-button class="modal-segment-single-tag" ng-repeat="variant in modalVariants track by $index" color="danger" look="placeholder" ng-click="removeModalSegment($index, variant.segment)">
+          <uui-icon name="remove"></uui-icon> {{variant.segmentDisplay}}
+        </uui-button>
+      </uui-icon-registry-essential>
+
+      <uui-button slot="actions" ng-click="closeModal()">Cancel</uui-button>
+      <uui-button slot="actions" look="primary" color="positive" ng-click="addModalVariants()">Add group(s)</uui-button>
+
+    </uui-dialog-layout>
+  </uui-dialog>
+</div>

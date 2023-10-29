@@ -1,0 +1,56 @@
+<div ng-controller="PgMediaPickerEditorController" class="pg-mediapicker-editor">
+  
+  <umb-property-editor model="mediaPickerDefault"></umb-property-editor>
+  
+  <div class="toggle-pgs-media">
+    <uui-icon-registry-essential>
+      <uui-button ng-show="!model.showPersonalisationOpts" look="outline" label="Show personalisation" ng-click="togglePersonalisationView()">
+        <uui-icon name="add"></uui-icon> Show personalisation
+      </uui-button>
+      <uui-button ng-show="model.showPersonalisationOpts" look="outline" label="Hide personalisation" ng-click="togglePersonalisationView()">
+        <uui-icon name="subtract"></uui-icon> Hide personalisation
+      </uui-button>
+
+      <uui-tag ng-show="model.pgOptions.length > 0 && !model.showPersonalisationOpts" style="margin-right:12px;" color="positive" look="outline">{{model.pgOptions.length}} variant(s)</uui-tag>
+    </uui-icon-registry-essential>
+  </div>
+  
+  <uui-form-layout-item ng-show="model.showPersonalisationOpts">
+    <uui-box class="add-pg">
+      <label>Personalise content for:</label>
+      <select id="pgs-media" style="width:300px!important" ng-model="pg" ng-change="selectSegment(pg)">
+        <option value="">Select an option</option>
+        <optgroup ng-repeat="selectOptGroup in model.options" label="{{ selectOptGroup.group }}">
+          <option ng-repeat="selectOpt in selectOptGroup.options" value="{{selectOpt.value}}" ng-disabled="isDisabled(selectOptGroup.group, selectOpt.value)">{{selectOpt.name}}</option>
+        </optgroup>
+      </select>
+    </uui-box>
+
+    <uui-box style="--uui-box-default-padding: 0;" ng-show="model.pgOptions.length > 0">
+      <uui-table>
+        <uui-table-head>
+          <uui-table-head-cell></uui-table-head-cell>
+          <uui-table-head-cell>Segment</uui-table-head-cell>
+          <uui-table-head-cell>Input</uui-table-head-cell>
+        </uui-table-head>
+
+        <uui-table-row ng-repeat="option in model.pgOptions track by $index">
+          <uui-table-cell>
+            <uui-icon-registry-essential>
+              <uui-action-bar style="justify-self: left;">
+                <uui-button label="Delete" ng-click="removeOption($index)">
+                  <uui-icon name="delete"></uui-icon>
+                </uui-button>
+              </uui-action-bar>
+            </uui-icon-registry-essential>
+          </uui-table-cell>
+          <uui-table-cell><uui-label>{{option.segmentDisplay}}</uui-label></uui-table-cell>
+          <uui-table-cell>
+            <umb-property-editor model="mediaPickers[$index]"></umb-property-editor>
+          </uui-table-cell>
+        </uui-table-row>
+      </uui-table>
+    </uui-box>
+  </uui-form-layout-item>
+
+</div>

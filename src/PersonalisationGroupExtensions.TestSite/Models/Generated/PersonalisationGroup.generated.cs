@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace PersonalisationGroupExtensions.TestSite.Models.Generated
 {
-	/// <summary>Personalised welcome</summary>
-	[PublishedModel("personalisedWelcome")]
-	public partial class PersonalisedWelcome : PublishedContentModel
+	/// <summary>Personalisation Group</summary>
+	[PublishedModel("personalisationGroup")]
+	public partial class PersonalisationGroup : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
-		public new const string ModelTypeAlias = "personalisedWelcome";
+		public new const string ModelTypeAlias = "personalisationGroup";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
@@ -34,14 +34,14 @@ namespace PersonalisationGroupExtensions.TestSite.Models.Generated
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<PersonalisedWelcome, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<PersonalisationGroup, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public PersonalisedWelcome(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public PersonalisationGroup(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,27 +50,11 @@ namespace PersonalisationGroupExtensions.TestSite.Models.Generated
 		// properties
 
 		///<summary>
-		/// Featured image
+		/// Group definition
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("featuredImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops FeaturedImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "featuredImage");
-
-		///<summary>
-		/// Introduction
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("introduction")]
-		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString Introduction => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "introduction");
-
-		///<summary>
-		/// Welcome message
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("welcomeMessage")]
-		public virtual object WelcomeMessage => this.Value(_publishedValueFallback, "welcomeMessage");
+		[ImplementPropertyType("definition")]
+		public virtual global::Our.Umbraco.PersonalisationGroups.Core.Criteria.PersonalisationGroupDefinition Definition => this.Value<global::Our.Umbraco.PersonalisationGroups.Core.Criteria.PersonalisationGroupDefinition>(_publishedValueFallback, "definition");
 	}
 }
