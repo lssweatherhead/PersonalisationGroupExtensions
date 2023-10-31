@@ -1,10 +1,11 @@
 using Newtonsoft.Json;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
+using Umbraco.Cms.Core.PropertyEditors.DeliveryApi;
 
 namespace PersonalisationGroupExtensions.TestSite.PropertyConverters
 {
-    public class PersonalisationGroupTextstringValueConverter : PropertyValueConverterBase
+    public class PersonalisationGroupTextstringValueConverter : PropertyValueConverterBase, IDeliveryApiPropertyValueConverter
     {
         public override bool IsConverter(IPublishedPropertyType propertyType) =>
             propertyType.EditorAlias.InvariantEquals("PersonalisationGroupTextstringEditor");
@@ -19,6 +20,21 @@ namespace PersonalisationGroupExtensions.TestSite.PropertyConverters
             }
 
             return base.ConvertSourceToIntermediate(owner, propertyType, source, preview);
+        }
+
+        public PropertyCacheLevel GetDeliveryApiPropertyCacheLevel(IPublishedPropertyType propertyType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Type GetDeliveryApiPropertyValueType(IPublishedPropertyType propertyType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object? ConvertIntermediateToDeliveryApiObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview, bool expanding)
+        {
+            throw new NotImplementedException();
         }
     }
 
