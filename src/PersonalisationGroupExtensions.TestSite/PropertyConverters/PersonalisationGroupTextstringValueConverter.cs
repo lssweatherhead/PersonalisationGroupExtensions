@@ -22,19 +22,33 @@ namespace PersonalisationGroupExtensions.TestSite.PropertyConverters
             return base.ConvertSourceToIntermediate(owner, propertyType, source, preview);
         }
 
-        public PropertyCacheLevel GetDeliveryApiPropertyCacheLevel(IPublishedPropertyType propertyType)
-        {
-            throw new NotImplementedException();
-        }
+        // cached until the element itself is modified
+        public PropertyCacheLevel GetDeliveryApiPropertyCacheLevel(IPublishedPropertyType propertyType) => PropertyCacheLevel.Element;
 
-        public Type GetDeliveryApiPropertyValueType(IPublishedPropertyType propertyType)
-        {
-            throw new NotImplementedException();
-        }
+        public Type GetDeliveryApiPropertyValueType(IPublishedPropertyType propertyType) => typeof(string);
 
-        public object? ConvertIntermediateToDeliveryApiObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview, bool expanding)
+        public object? ConvertIntermediateToDeliveryApiObject(
+            IPublishedElement owner,
+            IPublishedPropertyType propertyType,
+            PropertyCacheLevel referenceCacheLevel,
+            object? inter,
+            bool preview,
+            bool expanding)
         {
-            throw new NotImplementedException();
+            if (inter is null)
+            {
+                return "";
+            }
+
+            if (inter is not IEnumerable<PersonalisationMapping> allValues || !allValues.Any())
+            {
+                return "";
+            }
+
+            var groupName = "";
+            var defaultValue = allValues.First().Textstring;
+
+            return allValues.FirstOrDefault(x => x.Group == groupName)?.Textstring ?? defaultValue;
         }
     }
 
